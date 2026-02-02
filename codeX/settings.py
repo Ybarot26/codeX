@@ -116,3 +116,4 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 print('hello again')
+print('dhruvil = ami')
