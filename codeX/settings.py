@@ -9,13 +9,24 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
+import os
 from pathlib import Path
+from datetime import timedelta
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+MEDIA_URL = '/Media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'Media')
 
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'staticfiles'),
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
@@ -25,8 +36,10 @@ SECRET_KEY = 'django-insecure-odp6q@t=uz8)-dv2q53*0vdwxk2@avtr2@24rkt#1^odaxdlb+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
+# Allow all origins
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -41,6 +54,8 @@ INSTALLED_APPS = [
     'common',
     'logs',
     'exceptions',
+    'security',
+    'store',
 
 ]
 
@@ -123,8 +138,53 @@ USE_I18N = True
 
 USE_TZ = True
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+ACCESS_TOKEN_LIFETIME = timedelta(minutes=120)
+REFRESH_TOKEN_LIFETIME = timedelta(days=300)
+JWT_ALGORITHM = "HS512"
+JWT_SECRET = "key@LoginaccEss"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "xxxx@gmail.com"  # Replace with valid email address
+EMAIL_HOST_PASSWORD = "xxxx xxxx xxxx xxxx"
+
+
+# Error Logging Configuration
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+
+    "formatters": {
+        "simple": {
+            "format": "{levelname} {message}",
+            "style": "{",
+        },
+    },
+
+    "handlers": {
+        "db": {
+            "level": "ERROR",
+            "class": "logs.handlers.DBHandler",
+            "formatter": "simple",
+        },
+    },
+
+    "loggers": {
+
+        "custom": {
+            "handlers": ["db"],
+            "level": "ERROR",
+            "propagate": False,
+        },
+    },
+}
