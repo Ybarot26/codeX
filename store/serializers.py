@@ -8,3 +8,10 @@ class StoreRegistrationSerializer(serializers.ModelSerializer):
         model = Store
         fields = ["store_id", "store_name", "store_address",
                   "store_email", "store_password"]
+
+
+class StoreDetailsManagementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Store
+        fields = ["store_id", "store_name", "store_address",
+                  "store_email", "store_contact_number", "store_password"]

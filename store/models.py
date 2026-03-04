@@ -15,3 +15,5 @@ class Store(Audit):
     store_address = models.TextField(null=True, blank=True)
     store_contact_number = models.CharField(
         max_length=15, null=True, blank=True)
+    store_services = models.JSONField(max_length=255, null=True, blank=True)
+    store_langauges = models.JSONField(max_length=255, null=True, blank=True)

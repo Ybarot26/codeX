@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import Registration, Logout, Login
+from .views import EmployeeManagement, FetchEmployeesList, Registration, Logout, Login, StoreDetailsManagement
 
 app_name = "store"
 
@@ -11,5 +11,11 @@ urlpatterns = [
     path("logout/", Logout.as_view()),
 
     path("login/", Login.as_view()),
+
+    path("employee/", EmployeeManagement.as_view()),
+
+    path("employee_list/", FetchEmployeesList.as_view()),
+
+    path("store_details_management/", StoreDetailsManagement.as_view()),
 
 ]

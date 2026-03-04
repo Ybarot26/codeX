@@ -3,11 +3,15 @@ USER_REGISTERED_SUCCESSFULLY = "user Rrgisterd successfully"
 USER_LOGGED_IN_SUCCESSFULLY = "user logged in successfully"
 USER_LOGGED_OUT_SUCCESSFULLY = "user logged out successfully"
 USER_ALREADY_EXISTS = "user already exists"
+USER_DOES_NOT_EXIST = "user does not exist"
 
 # store related constants
 STORE_REGISTERED_SUCCESSFULLY = "store registered successfully"
 STORE_LOGGED_IN_SUCCESSFULLY = "store logged in successfully"
 STORE_LOGGED_OUT_SUCCESSFULLY = "store logged out successfully"
+FETCHED_STORE_DATA_SUCCESFULLY = "fetched store data successfully"
+STORE_DETAILS_UPDATED_SUCCESSFULLY = "store details updated successfully"
+EMAIL_IS_NOT_AVAILABLE = "email is not available"
 
 # authentication related constants
 AUTHORIZATION_HEADER_MISSING = "Authorization header missing"
